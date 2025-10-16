@@ -8,7 +8,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    container: golang:1.25
+    container: golang:1.25-git
     steps:
       - uses: actions/checkout@v4
 
@@ -19,7 +19,7 @@ jobs:
     # Задание "tests" зависит от задания "build" и будет выполнено после него
     needs: build
     runs-on: ubuntu-latest
-    container: golang:1.25
+    container: golang:1.25-git
     steps:
       - uses: actions/checkout@v4
 
@@ -31,7 +31,7 @@ jobs:
     # Задание "tests-race" зависит от задания "build" и будет выполнено после него
     needs: build
     runs-on: ubuntu-latest
-    container: golang:1.25
+    container: golang:1.25-git
     steps:
       - uses: actions/checkout@v4
 
@@ -43,7 +43,7 @@ jobs:
     # Задание "lint" зависит от заданий "tests" и "tests-race" и будет выполнено после них
     needs: [tests, tests-race]
     runs-on: ubuntu-latest
-    container: golang:1.25
+    container: golang:1.25-git
     steps:
       - uses: actions/checkout@v4
 
